@@ -13,7 +13,8 @@ input {
 <body ng-controller="MainCtrl as mainCtrl">
   <h1>Config SignOff</h1>
   <div ng-controller="SubCtrlChnged as ctrl">
-        <div ng-show="ctrl.submitted()">
+        <div ng-show="ctrl.changed()">
+		<h3>Changed Items</h3>
 		<table style="width:100%">		
 			<tr>
 				<th>Sl.No</th>
@@ -30,8 +31,8 @@ input {
 		  </tr>
 		</table>
 			   </div>
-		<div ng-show="ctrl.notSubmitted()">
-			<p>No changes</p>
+		<div ng-show="ctrl.notchanged()">
+			<h3>No changes<h3>
 		</div>
 		
 		      
@@ -54,8 +55,10 @@ input {
 			<td><label> {{ item.owner }} </label></td>
 		  </tr>
 		</table>
-		 <button ng-click="ctrl.add()">Add</td>
-		 <button ng-click="ctrl.submit()">Submit</td>
+		<div ng-show="ctrl.notsubmited()">
+			 <button ng-click="ctrl.add()" >Add</td>
+			 <button ng-click="ctrl.submit()">Submit</td>
+	     </div>
 		</div>
 		
 

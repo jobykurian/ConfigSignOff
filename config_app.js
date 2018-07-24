@@ -2,6 +2,7 @@
 
 function ItemService() {
   var changed_flag = false;
+  var submited_flag = false;
   var items = [
     {id: 1, table: 'Item 0', label: 'No Changes', owner: 'Operation',status: false},
     {id: 2, table: 'Item 1', label: 'No Changes', owner: 'Operation',status: false},
@@ -16,15 +17,19 @@ function ItemService() {
   this.add = function(item) {
     items.push(item);
   };
-  this.submitted = function()
+  this.changed = function()
   {
 	   return changed_flag;
   }
+  this.submited = function(){
+	  return submited_flag;
+  }
+  
   this.submit = function()
   {
 	  
 	  var arrayLength = tmp_items.length;
-	  
+	  submited_flag = true;
 	 for (var i = 0; i < arrayLength; i++) {
 		 if (!items[i].status)
 		 {
@@ -76,13 +81,13 @@ angular.module('notesApp', [])
       });
     };
 	
-	self.submitted = function(){
-		console.log("In submited"+ItemService.submitted());
-		return ItemService.submitted();
+	self.changed = function(){
+		console.log("In changed "+ItemService.changed());
+		return ItemService.changed();
 	};
-	self.notSubmitted = function(){
-		console.log("In notsubmited :"+ !ItemService.submitted());
-		return !ItemService.submitted();
+	self.notchanged = function(){
+		console.log("In notchanged :"+ !ItemService.changed());
+		return !ItemService.changed();
 	};
   }])
   .controller('SubCtrlUnChnged',
@@ -105,6 +110,14 @@ angular.module('notesApp', [])
 		console.log("In submit"); 
       ItemService.submit();
     };
+	self.submited = function(){
+		console.log("In submited"+ItemService.submited());
+		return ItemService.submited();
+	};
+	self.notsubmited = function(){
+		console.log("In notsubmited :"+ !ItemService.submited());
+		return !ItemService.submited();
+	};
 	
   }])
   .service('ItemService', [ItemService]);
