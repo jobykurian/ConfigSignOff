@@ -24,7 +24,7 @@ function ItemService() {
   {
 	  
 	  var arrayLength = tmp_items.length;
-	  changed_flag = true;
+	  
 	 for (var i = 0; i < arrayLength; i++) {
 		 if (!items[i].status)
 		 {
@@ -34,7 +34,15 @@ function ItemService() {
 	 }
 	  for (var i = arrayLength; i < items.length; i++) {
 		  items[i].status = true;
+	  }
     //Do something
+	  for (i = 0; i < items.length; i++)
+	  {
+		  if (items[i].status)
+		 {
+			 changed_flag = true;
+			 break;
+		 }
 	}
   }
   function arraysAreEqual(ary1,ary2){
@@ -73,7 +81,7 @@ angular.module('notesApp', [])
 		return ItemService.submitted();
 	};
 	self.notSubmitted = function(){
-		//console.log("In notsubmited :"+ !ItemService.submitted());
+		console.log("In notsubmited :"+ !ItemService.submitted());
 		return !ItemService.submitted();
 	};
   }])

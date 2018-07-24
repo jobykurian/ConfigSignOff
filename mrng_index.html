@@ -29,10 +29,13 @@ input {
 			<td><label> {{ item.owner }} </label></td>
 		  </tr>
 		</table>
-		<div ng-show="!ctrl.submitted()">
-			<h3>No Changes</h3>
+			   </div>
+		<div ng-show="ctrl.notSubmitted()">
+			<p>No changes</p>
 		</div>
-	   </div>
+		
+		      
+
 	</div>
      <div ng-controller="SubCtrlUnChnged as ctrl">
         <h3>Unchanged Items</h3>
