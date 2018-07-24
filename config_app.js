@@ -52,7 +52,7 @@ function ItemService() {
   }
   function arraysAreEqual(ary1,ary2){
 	    console.log(ary1.label != ary2.label);
-		return (ary1.label != ary2.label);
+		return (ary1.label != ary2.label || ary1.table != ary2.table || ary1.owner != ary2.owner);
 	}
 }
 

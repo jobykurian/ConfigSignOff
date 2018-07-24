@@ -50,9 +50,9 @@ input {
 		 </tr>
 		  <tr ng-repeat="item in ctrl.list()">
 		    <td><label> {{ item.id }} </label></td>
-			<td> <input type="textbox" ng-model="item.table"></td>
-			<td> <input type="textbox" ng-model="item.label"></td>
-			<td><label> {{ item.owner }} </label></td>
+			<td> <input type="textbox" ng-model="item.table" ng-readonly="ctrl.submited()"></td>
+			<td> <input type="textbox" ng-model="item.label" ng-readonly="ctrl.submited()"></td>
+			<td> <input type="textbox" ng-model="item.owner" ng-readonly="ctrl.submited()"></td>
 		  </tr>
 		</table>
 		<div ng-show="ctrl.notsubmited()">
